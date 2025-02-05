@@ -123,6 +123,7 @@ cc_library {
     defaults: [
         "libcameraservice_deps",
         "camera_package_name_defaults",
+        "libcameraservice_ext_lib_defaults",
         "camera_needs_client_info_lib_defaults",
         "camera_needs_client_info_lib_oplus_defaults",
         "uses_miui_camera_defaults",
@@ -137,6 +138,7 @@ cc_library {
         "common/CameraDeviceBase.cpp",
         "common/CameraOfflineSessionBase.cpp",
         "common/CameraProviderManager.cpp",
+        "common/CameraProviderExtension.cpp",
         "common/FrameProcessorBase.cpp",
         "common/hidl/HidlProviderInfo.cpp",
         "common/aidl/AidlProviderInfo.cpp",
@@ -233,6 +235,14 @@ cc_library {
         "-Wno-ignored-qualifiers",
     ],
 
+}
+
+cc_library_static {
+    name: "libcameraservice_ext_lib",
+    srcs: [
+        "common/CameraProviderExtension.cpp",
+    ],
+    export_include_dirs: ["."],
 }
 
 cc_library_static {
